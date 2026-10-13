@@ -1,0 +1,5 @@
+# 单包仓库：留一个空 packages 列表，避免 pnpm 把上级工作区当成本仓库的一部分。
+minimumReleaseAgeExcludePrune: true
+trustPolicy: no-downgrade
+shellEmulator: true
+packages: []

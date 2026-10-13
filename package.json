@@ -1,0 +1,95 @@
+{
+  "name": "dsh-tauri-notify-webhook",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "DSH 桌面通知转发插件：任务异常停止或完成时把通知推到邮件（SMTP）或 pushplus；只在窗口失去焦点时推送，宿主路由挂在 /api/tauri/notify-webhook。",
+  "author": "iuuuuuuuu",
+  "license": "MIT",
+  "homepage": "https://github.com/iuuuuuuuu/dsh-tauri-notify-webhook#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iuuuuuuuu/dsh-tauri-notify-webhook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iuuuuuuuu/dsh-tauri-notify-webhook/issues"
+  },
+  "keywords": [
+    "dsh",
+    "plugin",
+    "dsh-plugin",
+    "tauri",
+    "deepseek-harness",
+    "notification",
+    "webhook",
+    "pushplus",
+    "smtp"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "default": "./dist/client.cjs"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "README.md",
+    "cordis.patch.yml",
+    "dist"
+  ],
+  "dsh": {
+    "runtime": "host",
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-locale",
+        "dsh-tauri",
+        "dsh-tauri-ui"
+      ],
+      "external": [
+        "dsh-tauri/client",
+        "dsh-tauri-ui/client"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=22.15.0"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "typecheck": "tsc",
+    "lint": "eslint .",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "valtio-define": "^1.4.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.3.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^10.8.1",
+    "jsdom": "^30.1.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tsdown": "^0.17.3",
+    "typescript": "~5.8.3",
+    "vitest": "^4.1.11"
+  }
+}

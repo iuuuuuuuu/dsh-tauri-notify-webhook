@@ -1,0 +1,6 @@
+# Sourcemap sourcesContent 逐字嵌入源码字节：CRLF 工作树（Windows）会把 \r\n
+# 写进 dist/*.map，而 CI 从 LF 构建，随后在 "Verify committed dist is up to date"
+# 这一步失败。源码与构建产物都钉成 LF，任何平台产出的 dist 逐字节一致。
+src/** text eol=lf
+compat/** text eol=lf
+dist/** text eol=lf
